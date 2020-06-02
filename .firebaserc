@@ -1,9 +1,9 @@
 {
   "targets": {
-    "my-first-project-8dce1": {
+    "scheduler2-ui-kamilcinner": {
       "hosting": {
         "ui": [
-          "my-first-project-8dce1"
+          "scheduler2-ui-kamilcinner"
         ]
       }
     }
