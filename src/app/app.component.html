@@ -1,0 +1,9 @@
+<app-top-nav (mouseleave)="onMouseLeave()"></app-top-nav>
+
+<main>
+  <div class="container my-3 min-vh-100">
+    <router-outlet (activate)="onActivate($event)"></router-outlet>
+  </div>
+</main>
+
+<app-footer></app-footer>
