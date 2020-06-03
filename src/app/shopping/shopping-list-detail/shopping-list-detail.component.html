@@ -1,8 +1,8 @@
-<div *ngIf="loadingDetail" class="overlay">
+<div *ngIf="loadingDetail" class="overlay-flex">
   <span class="spinner-border"></span>
 </div>
 
-<div *ngIf="shoppingList" class="jumbotron mb-3 p-2 bg-scheduler-dark-2 c-scheduler-white overlay-parent">
+<div *ngIf="!loadingDetail && shoppingList" class="jumbotron mb-3 p-2 bg-scheduler-dark-2 c-scheduler-white overlay-parent">
   <h1 class="display-4">{{ shoppingList.name }}</h1>
 
   <p *ngIf="shoppingList.shared" class="ml-1 font-weight-light my-0 text-success">Shared</p>
@@ -41,7 +41,7 @@
     <a class="w-100 btn mt-2 bg-scheduler-dark-3 c-scheduler btn-lg" role="button" (click)="onShare()"
        [ngSwitch]="shoppingList.shared">
 
-      <span *ngIf="loadingShareBtn" class="spinner-border spinner-border-sm"></span>
+      <span *ngIf="loadingShareBtn" class="spinner-border spinner-border-sm mb-1 mr-2"></span>
       <span *ngSwitchCase="true">Unshare</span>
       <span *ngSwitchDefault>Share</span>
     </a>
@@ -52,7 +52,7 @@
   </div>
 </div>
 
-<div *ngIf="shoppingList && authenticated && !loadingDetail">
+<div *ngIf="!loadingDetail && authenticated">
   <a class="btn bg-scheduler c-scheduler-dark btn-lg w-100" role="button"
      routerLink="/shoppinglists">Go to Shopping Lists</a>
 </div>

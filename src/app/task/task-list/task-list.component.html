@@ -2,7 +2,7 @@
   <span class="spinner-border"></span>
 </div>
 
-<div *ngIf="tasks" class="list-group">
+<div *ngIf="!loading && tasks" class="list-group">
   <a *ngFor="let task of tasks" [routerLink]="['/tasks/one', task.id]"
       class="list-group-item mb-3 list-group-item-action"
       [ngClass]="{'bg-scheduler-dark-2 c-scheduler-white': task.priority === 'h',

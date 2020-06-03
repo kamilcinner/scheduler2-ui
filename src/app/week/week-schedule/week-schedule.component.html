@@ -37,7 +37,7 @@
           <h1 class="display-4">{{ day.weekDayName }}</h1>
 
           <div *ngFor="let quest of day.quests" class="list-group">
-            <a class="list-group-item {% endif %}" [routerLink]="quest.absoluteUrl"
+            <a class="list-group-item" [routerLink]="quest.absoluteUrl"
                [ngClass]="{'bg-scheduler-dark-2 c-scheduler-white': quest.priority === 'h',
                            'bg-scheduler-light c-scheduler-dark': quest.priority === 'l',
                            'bg-scheduler-dark-3': quest.priority === 'n',

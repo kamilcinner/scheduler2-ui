@@ -1,4 +1,8 @@
-<div *ngIf="!loadingForm" class="jumbotron mb-3 p-2 bg-scheduler-dark-2 c-scheduler-white overlay-parent">
+<div *ngIf="loadingForm" class="overlay-flex">
+  <span class="spinner-border"></span>
+</div>
+
+<div *ngIf="!loadingForm" class="jumbotron mb-3 p-2 bg-scheduler-dark-2 c-scheduler-white">
   <h1 class="display-4">{{ shoppingList.name }}</h1>
 
   <hr class="my-4 bg-scheduler-light">
@@ -46,8 +50,4 @@
   </p>
 
   <small *ngIf="errors && errors.server" class="text-danger">{{ errors.server }}</small>
-
-  <div *ngIf="loadingForm" class="overlay-flex bg-scheduler-dark-3">
-    <span class="spinner-border"></span>
-  </div>
 </div>

@@ -8,6 +8,7 @@ import { Router } from '@angular/router'
   styleUrls: ['./pollub.component.css']
 })
 export class PollubComponent implements OnInit {
+  submitted = false
 
   constructor(
     private activityService: ActivityService,
@@ -18,6 +19,7 @@ export class PollubComponent implements OnInit {
   }
 
   onProceedToPollub(): void {
+    this.submitted = true
     this.activityService.addActivitiesFromPollub().subscribe(() => {
       this.router.navigate(['/activities']).then(r => console.log(r))
     })

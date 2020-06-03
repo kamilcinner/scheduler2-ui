@@ -1,8 +1,8 @@
-<div *ngIf="loadingDetail" class="overlay">
+<div *ngIf="loadingDetail" class="overlay-flex">
   <span class="spinner-border"></span>
 </div>
 
-<div *ngIf="activity" class="jumbotron mb-3 p-2 bg-scheduler-dark-2 c-scheduler-white overlay-parent">
+<div *ngIf="!loadingDetail && activity" class="jumbotron mb-3 p-2 bg-scheduler-dark-2 c-scheduler-white overlay-parent">
   <h1 class="font-weight-light">{{ activity.name }}</h1>
 
   <p class="my-0 font-weight-light" [ngClass]="{'text-danger': !activity.statusActive,
@@ -37,7 +37,7 @@
   </app-activity-confirm-delete>
 </div>
 
-<div *ngIf="activity && !loadingDetail">
+<div *ngIf="!loadingDetail">
   <a class="mb-2 btn bg-scheduler c-scheduler-dark btn-lg w-100"
      role="button" routerLink="/activities">Go to Activities</a>
 

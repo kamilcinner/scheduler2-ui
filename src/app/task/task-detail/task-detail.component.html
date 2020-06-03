@@ -1,8 +1,8 @@
-<div *ngIf="loadingDetail" class="overlay">
+<div *ngIf="loadingDetail" class="overlay-flex">
   <span class="spinner-border"></span>
 </div>
 
-<div *ngIf="task" class="jumbotron mb-3 p-2 overlay-parent"
+<div *ngIf="!loadingDetail && task" class="jumbotron mb-3 p-2 overlay-parent"
      [ngClass]="{'bg-scheduler-dark-2 c-scheduler-white': task.priority === 'h',
                  'bg-scheduler-light c-scheduler-dark': task.priority === 'l',
                  'bg-scheduler-dark-3 c-scheduler-light': task.priority === 'n'}">
@@ -40,15 +40,15 @@
 
   <div *ngIf="currentUserIsOwner">
     <div class="d-flex mb-2 w-100 justify-content-between">
-      <a class="btn c-scheduler btn-lg" role="button" (click)="onShare()"
+      <button [disabled]="loadingShareBtn" class="btn c-scheduler btn-lg" (click)="onShare()"
          [ngClass]="{'bg-scheduler-dark-2': task.priority === 'n',
                     'bg-scheduler-dark-3': task.isOneOfPriorities('l', 'h')}"
          [ngSwitch]="task.shared">
 
-        <span *ngIf="loadingShareBtn" class="spinner-border spinner-border-sm"></span>
+        <span *ngIf="loadingShareBtn" class="spinner-border spinner-border-sm mb-1 mr-2"></span>
         <span *ngSwitchCase="true">Unshare</span>
         <span *ngSwitchDefault>Share</span>
-      </a>
+      </button>
 
       <a class="btn c-scheduler btn-lg" role="button" [routerLink]="['/tasks/update', task.id]"
          [ngClass]="{'bg-scheduler-dark-2': task.priority === 'n',
@@ -58,17 +58,17 @@
     </div>
 
     <div class="d-flex w-100 justify-content-between">
-      <a class="btn c-scheduler btn-lg" role="button" (click)="onMark()"
+      <button [disabled]="loadingMarkBtn" class="btn c-scheduler btn-lg" (click)="onMark()"
          [ngClass]="{'bg-scheduler-dark-2': task.priority === 'n',
                     'bg-scheduler-dark-3': task.isOneOfPriorities('l', 'h')}"
          [ngSwitch]="task.done">
 
-        <span *ngIf="loadingMarkBtn" class="spinner-border spinner-border-sm"></span>
+        <span *ngIf="loadingMarkBtn" class="spinner-border spinner-border-sm mb-1 mr-2"></span>
         <span *ngSwitchCase="true">Undone</span>
         <span *ngSwitchDefault>Mark done</span>
-      </a>
+      </button>
 
-      <a class="btn btn-danger btn-lg" role="button" (click)="onShowDeleteConfirmation()">Delete</a>
+      <button class="btn btn-danger btn-lg" (click)="onShowDeleteConfirmation()">Delete</button>
     </div>
 
     <app-task-confirm-delete *ngIf="!hideDelete" [task]="task" (abortDelete)="onHideDeleteConfirmation()"
@@ -77,7 +77,7 @@
   </div>
 </div>
 
-<div *ngIf="task && authenticated && !loadingDetail">
+<div *ngIf="!loadingDetail && authenticated">
   <a class="mb-2 btn bg-scheduler c-scheduler-dark btn-lg w-100"
      role="button" routerLink="/tasks">Go to Tasks</a>
 
