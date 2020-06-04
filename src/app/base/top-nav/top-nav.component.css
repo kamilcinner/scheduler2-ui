@@ -1,3 +1,11 @@
 li {
   cursor: pointer;
 }
+
+a[role="button"] {
+  color: #fff;
+}
+
+a[role="button"]:hover {
+  color: #00a161;
+}
