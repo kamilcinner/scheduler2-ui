@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivityService } from '@app/activity/_services'
-import { Router } from '@angular/router'
+import { ActivatedRoute, Router } from '@angular/router'
 
 @Component({
   selector: 'app-pollub',
@@ -13,6 +13,7 @@ export class PollubComponent implements OnInit {
   constructor(
     private activityService: ActivityService,
     private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -25,5 +26,12 @@ export class PollubComponent implements OnInit {
     })
   }
 
+  onReturn() {
+    // Get return url.
+    const returnUrl = this.route.snapshot.queryParams.returnUrl || '/'
+    this.router.navigate([returnUrl]).then(
+      () => console.log('Aborted getting Activities from Pollub.')
+    )
+  }
 
 }
