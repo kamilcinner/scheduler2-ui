@@ -17,7 +17,9 @@
     <li *ngFor="let item of shoppingList.items" class="my-0 {% if item.status %}text-muted{% endif %}">
       <a (click)="onMark(item.id)" role="button" [ngClass]="{'text-line-through text-muted': item.done,
                      'c-scheduler-white': !item.done}">
-        <p class="lead mt-0 mb-2">{{ item.name }}</p>
+        <p class="lead mt-0 mb-2">{{ item.name }}<span *ngIf="loadingItemMark && currentMarkingItemId === item.id"
+                                                       class="spinner-border spinner-border-sm mb-1 ml-2 c-scheduler">
+        </span></p>
       </a>
     </li>
   </ul>

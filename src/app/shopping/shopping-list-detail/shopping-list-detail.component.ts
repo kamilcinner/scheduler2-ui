@@ -15,6 +15,8 @@ export class ShoppingListDetailComponent implements OnInit {
   loadingShareBtn = false
   loadingDetail = true
   hideDelete = true
+  loadingItemMark = false
+  currentMarkingItemId: string = ''
 
   constructor(
     protected shoppingService: ShoppingService,
@@ -122,6 +124,8 @@ export class ShoppingListDetailComponent implements OnInit {
 
   // Mark item done/undone.
   onMark(id: string): void {
+    this.loadingItemMark = true
+    this.currentMarkingItemId = id
     const result = this.shoppingService.markItem(id)
     if (result) {
       result.subscribe(() => this.markLocalItem(id))
@@ -137,6 +141,8 @@ export class ShoppingListDetailComponent implements OnInit {
       if (this.shoppingList.items[i].id === id) {
         this.shoppingList.items[i].done = !this.shoppingList.items[i].done
         console.log(`Marked Item ${id}.`)
+        this.loadingItemMark = false
+        this.currentMarkingItemId = ''
         return
       }
     }
