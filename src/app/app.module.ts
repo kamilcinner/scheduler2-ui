@@ -31,7 +31,8 @@ import { ShoppingListConfirmDeleteComponent } from '@app/shopping/shopping-list-
 import { ShoppingListNewFormComponent } from '@app/shopping/shopping-list-new-form'
 import { ShoppingListItemsFormComponent } from '@app/shopping/shopping-list-items-form';
 import { AboutComponent } from '@app/base/about';
-import { OtherProjectsComponent } from '@app/base/other-projects'
+import { OtherProjectsComponent } from '@app/base/other-projects';
+import { ActivityAllConfirmDeleteComponent } from '@app/activity/activity-all-confirm-delete'
 
 @NgModule({
   imports: [
@@ -66,7 +67,8 @@ import { OtherProjectsComponent } from '@app/base/other-projects'
     ShoppingListNewFormComponent,
     ShoppingListItemsFormComponent,
     AboutComponent,
-    OtherProjectsComponent
+    OtherProjectsComponent,
+    ActivityAllConfirmDeleteComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

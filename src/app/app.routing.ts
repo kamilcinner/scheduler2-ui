@@ -21,6 +21,7 @@ import { ShoppingListNewFormComponent } from '@app/shopping/shopping-list-new-fo
 import { ShoppingListItemsFormComponent } from '@app/shopping/shopping-list-items-form'
 import { AboutComponent } from '@app/base/about';
 import { OtherProjectsComponent } from '@app/base/other-projects';
+import { ActivityAllConfirmDeleteComponent } from '@app/activity/activity-all-confirm-delete';
 
 const routes: Routes = [
   // Home.
@@ -41,6 +42,7 @@ const routes: Routes = [
     { path: 'one/:id', component: ActivityDetailComponent },
     { path: 'new', component: ActivityFormComponent },
     { path: 'update/:id', component: ActivityFormComponent },
+    { path: 'delete', component: ActivityAllConfirmDeleteComponent },
     { path: 'pollub', component: PollubComponent },
   ]},
 

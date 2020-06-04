@@ -128,6 +128,13 @@ export class ActivityService {
   }
 
   /**
+   * Deletes all Activities related with current User from API.
+   */
+  deleteAll() {
+    return this.http.delete(`${environment.apiUrl}/activities`)
+  }
+
+  /**
    * Adds university subjects to User Activities in API.
    */
   addActivitiesFromPollub() {
